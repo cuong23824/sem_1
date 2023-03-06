@@ -1,0 +1,155 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@300;500;600&display=swap");
+
+
+
+body {
+  font-family: Montserrat, sans-serif;
+}
+
+.nav__flex {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.nav__right {
+  width: 280px;
+  justify-content: space-between;
+}
+
+.icon {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 2px;
+}
+
+.icon-bell {
+  position: relative;
+}
+
+.quantity {
+  position: absolute;
+  top: -10px;
+  right: 32px;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  text-align: center;
+  line-height: 22px;
+  color: #fff;
+  font-size: 12px;
+  font-weight: 600;
+  background-color: #3b82f6;
+}
+
+.content__top {
+  padding: 115px 0;
+}
+
+.info {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+  font-size: 72px;
+  line-height: 1.2;
+  color: #000000;
+}
+
+.desc {
+  margin-top: 9px;
+  text-align: center;
+  font-weight: 300;
+  font-size: 32px;
+  color: #000000;
+}
+
+/* search */
+
+.search {
+  margin-top: 42px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+form {
+  position: relative;
+  width: 700px;
+  border: 1px solid #c1c1c1;
+  border-radius: 8px;
+  outline: none;
+}
+
+.search__input {
+  margin-left: 24px;
+  width: 560px;
+  height: 60px;
+  background: #ffffff;
+  outline: none;
+  font-size: 20px;
+}
+
+.search__btn {
+  position: absolute;
+  top: 6px;
+  right: 6px;
+  padding: 12px 26px;
+  background: #0565d5;
+  border-radius: 8px;
+  color: #fff;
+}
+
+.search__input::-webkit-search-cancel-button {
+  cursor: pointer;
+}
+
+.content__bot {
+  margin-top: 31px;
+}
+
+.title-bot {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.sub-title {
+  font-weight: 500;
+  font-size: 32px;
+  line-height: 1.2;
+  color: #000000;
+}
+
+.title-bot__icon {
+  width: 36px;
+  height: 36px;
+  margin-right: 14px;
+  background: #2260ff;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+}
+
+.container-brands {
+  margin: 40px 0 52px;
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.brand-item {
+  width: 180px;
+  height: 180px;
+  border: 1px solid #c1c1c1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: calc(100% / 7);
+}
+
+.element {
+  color: #0047ff;
+}

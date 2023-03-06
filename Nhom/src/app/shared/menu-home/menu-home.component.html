@@ -1,0 +1,76 @@
+<div class=" py-5 mb-5 bg-gray-100">
+  <div class="container mx-auto px-16 flex justify-between items-center">
+    <div class="flex items-center space-x-4">
+      <a routerLink="">
+        <img src="../../assets/img/logo.png" alt="" class="w-24" >
+      </a>
+      <div class="flex space-x-2 p-3 rounded-md hover:bg-gray-200 hover:cursor-pointer">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+        </svg>
+        <div>
+          Brands
+        </div>
+      </div>
+    </div>
+
+
+    <!-- Icon right -->
+    <div class=" flex items-center ">
+
+      <div class="relative flex flex-col items-center justify-center hover:cursor-pointer iconNotification p-2 rounded-md hover:bg-gray-200"  (click)="showNotification()">
+        <div class="relative">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 ">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M14.857 17.082a23.848 23.848 0 005.454-1.31A8.967 8.967 0 0118 9.75v-.7V9A6 6 0 006 9v.75a8.967 8.967 0 01-2.312 6.022c1.733.64 3.56 1.085 5.455 1.31m5.714 0a24.255 24.255 0 01-5.714 0m5.714 0a3 3 0 11-5.714 0" />
+          </svg>
+
+          <div class="absolute top-0 right-0 transform translate-x-1/2 -translate-y-1/2 inline-flex items-center justify-center w-5 h-5 bg-blue-500 text-white font-semibold text-xs rounded-full">6</div>
+        </div>
+
+        <div>
+          Notifications
+        </div>
+
+        <!-- Notification -->
+        <app-notification *ngIf="show" [messageFromParent]="messageToChild" (closeFromChild)="closeNotification()" ></app-notification>
+      </div>
+
+      <div class="flex flex-col items-center justify-center hover:cursor-pointer p-2 rounded-md hover:bg-gray-200" routerLink="/products/comparison">
+        <div class="relative">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M16.023 9.348h4.992v-.001M2.985 19.644v-4.992m0 0h4.992m-4.993 0l3.181 3.183a8.25 8.25 0 0013.803-3.7M4.031 9.865a8.25 8.25 0 0113.803-3.7l3.181 3.182m0-4.991v4.99" />
+          </svg>
+
+          <div class="absolute top-0 right-0 transform translate-x-1/2 -translate-y-1/2 inline-flex items-center justify-center w-5 h-5 bg-blue-500 text-white font-semibold text-xs rounded-full" *ngIf="countItem > 0">{{countItem}}</div>
+        </div>
+
+
+        <div>
+          Comparison
+        </div>
+      </div>
+
+      <div routerLink="/login" class="flex flex-col items-center justify-center hover:cursor-pointer p-2 rounded-md hover:bg-gray-200" >
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M17.982 18.725A7.488 7.488 0 0012 15.75a7.488 7.488 0 00-5.982 2.975m11.963 0a9 9 0 10-11.963 0m11.963 0A8.966 8.966 0 0112 21a8.966 8.966 0 01-5.982-2.275M15 9.75a3 3 0 11-6 0 3 3 0 016 0z" />
+        </svg>
+
+        <div>
+          Account
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- <div *ngIf="hello">
+      <ng-container  *ngTemplateOutlet="notification"></ng-container>
+  </div>
+
+  <ng-template #notification>
+          <div  class="bg-slate-400 text-red-500 relative left-9">
+              Loading...
+          </div>
+  </ng-template> -->
+
+
+</div>

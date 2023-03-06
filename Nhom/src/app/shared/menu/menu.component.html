@@ -1,0 +1,139 @@
+<div id="scrollTop"></div>
+<div class=" py-5 mb-5 bg-gray-100">
+    <div class="container mx-auto px-16 flex justify-between items-center">
+        <div class="flex items-center space-x-4">
+            <a routerLink="">
+                <img src="../../assets/img/logo.png" alt="" class="w-24">
+            </a>
+            <div class="flex space-x-2 p-3 rounded-md hover:bg-gray-200 hover:cursor-pointer">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                     stroke="currentColor" class="w-6 h-6">
+                    <path stroke-linecap="round" stroke-linejoin="round"
+                          d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+                </svg>
+                <div>
+                    Brands
+                </div>
+            </div>
+
+        </div>
+        <!-- Search bar -->
+        <form action="" class="w-3/5 relative ">
+            <div class="relative">
+                <div class="absolute flex items-center inset-y-0 left-0 pl-3">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                         stroke="currentColor" class="w-6 h-6">
+                        <path stroke-linecap="round" stroke-linejoin="round"
+                              d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z" />
+                    </svg>
+                </div>
+                <input type="search" class="bg-white border-gray-200 w-full block py-4 pl-11 pr-28 rounded-md border focus:outline-none focus:ring-4 focus:ring-blue-300 focus:border-blue-600" placeholder="Search your phone here" [formControl]="searchInput" (click)="inputClicked = true">
+                  
+                <button type="submit" class="absolute right-2.5 bottom-2.5 bg-blue-500 text-white font-medium px-5 py-2 rounded focus:ring-4 focus: ring-blue-200">Search</button>
+            </div>
+
+            <div class="absolute -bottom-3 right-0 translate-y-full border bg-gray-50  rounded max-h-72 w-full z-10 shadow-lg overflow-y-auto" *ngIf="inputClicked && suggestions.length > 0">
+                <div *ngFor="let suggestion of suggestions" class="hover:bg-gray-100 font-medium text-sm px-2 my-2"  [routerLink]="['/product',slugifyProductName(suggestion.name)]">
+                    <div class="flex items-center space-x-2">
+                        <img [src]="suggestion.img" alt="" class="h-12">
+                        <div>{{ suggestion.name}}</div>
+                       
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="absolute -bottom-3 right-0 translate-y-full border bg-gray-50  rounded max-h-72 w-full z-10 shadow-lg overflow-y-auto"  *ngIf="inputClicked && suggestions.length === 0" >
+                <div class="hover:bg-gray-100 text-sm px-2 my-2">
+                    <div class="flex items-center space-x-2">
+                        <img  src="assets/img/phone/empty_product.svg" alt="" class="w-12">
+                        <div>Product not found</div>
+                    </div>
+                </div>
+            </div>
+           
+        </form>
+
+        
+
+        <!-- Icon right -->
+        <div class=" flex items-center ">
+
+            <div class="relative flex flex-col items-center justify-center hover:cursor-pointer iconNotification p-2 rounded-md hover:bg-gray-200"
+                 (click)="showNotification()">
+                <div class="relative">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                         stroke="currentColor" class="w-6 h-6 ">
+                        <path stroke-linecap="round" stroke-linejoin="round"
+                              d="M14.857 17.082a23.848 23.848 0 005.454-1.31A8.967 8.967 0 0118 9.75v-.7V9A6 6 0 006 9v.75a8.967 8.967 0 01-2.312 6.022c1.733.64 3.56 1.085 5.455 1.31m5.714 0a24.255 24.255 0 01-5.714 0m5.714 0a3 3 0 11-5.714 0" />
+                    </svg>
+
+                    <div
+                         class="absolute top-0 right-0 transform translate-x-1/2 -translate-y-1/2 inline-flex items-center justify-center w-5 h-5 bg-blue-500 text-white font-semibold text-xs rounded-full">
+                        6</div>
+                </div>
+
+                <div>
+                    Notifications
+                </div>
+
+                <!-- Notification -->
+                <app-notification *ngIf="show" [messageFromParent]="messageToChild"
+                                  (closeFromChild)="closeNotification()"></app-notification>
+            </div>
+
+            <div class="flex flex-col items-center justify-center hover:cursor-pointer p-2 rounded-md hover:bg-gray-200"
+                 routerLink="/products/comparison">
+                <div class="relative">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                         stroke="currentColor" class="w-6 h-6">
+                        <path stroke-linecap="round" stroke-linejoin="round"
+                              d="M16.023 9.348h4.992v-.001M2.985 19.644v-4.992m0 0h4.992m-4.993 0l3.181 3.183a8.25 8.25 0 0013.803-3.7M4.031 9.865a8.25 8.25 0 0113.803-3.7l3.181 3.182m0-4.991v4.99" />
+                    </svg>
+
+                    <div class="absolute top-0 right-0 transform translate-x-1/2 -translate-y-1/2 inline-flex items-center justify-center w-5 h-5 bg-blue-500 text-white font-semibold text-xs rounded-full"
+                         *ngIf="countItem > 0">{{countItem}}</div>
+                </div>
+
+
+                <div>
+                    Comparison
+                </div>
+            </div>
+
+            <div routerLink="/login"
+                 class="flex flex-col items-center justify-center hover:cursor-pointer p-2 rounded-md hover:bg-gray-200">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                     stroke="currentColor" class="w-6 h-6">
+                    <path stroke-linecap="round" stroke-linejoin="round"
+                          d="M17.982 18.725A7.488 7.488 0 0012 15.75a7.488 7.488 0 00-5.982 2.975m11.963 0a9 9 0 10-11.963 0m11.963 0A8.966 8.966 0 0112 21a8.966 8.966 0 01-5.982-2.275M15 9.75a3 3 0 11-6 0 3 3 0 016 0z" />
+                </svg>
+
+                <div>
+                    Account
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- <div *ngIf="hello">
+            <ng-container  *ngTemplateOutlet="notification"></ng-container>
+        </div>
+
+        <ng-template #notification>
+                <div  class="bg-slate-400 text-red-500 relative left-9">
+                    Loading...
+                </div>
+        </ng-template> -->
+
+
+</div>
+
+<!-- Scroll To Top -->
+<div class="fixed bg-blue-500 text-white  inline-flex p-2 right-4 bottom-1/2 rounded-full hover:cursor-pointer"
+     (click)="scrollToTop()">
+    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"
+         class="w-6 h-6">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M12 19.5v-15m0 0l-6.75 6.75M12 4.5l6.75 6.75" />
+    </svg>
+</div>
